@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Your logs, Sir</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" />
+    <link href="/assets/style.css" rel="stylesheet" />
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="main">
+      <ul class="log-entries">
+        <log-entry v-for="entry in entries" v-bind:entry="entry" v-on:filter="filter" />
+      </ul>
+      <div v-if="isFiltered" v-on:click="removeFiltering" id="remove-filtering">remove filtering</div>
+    </div>
+    <script type="text/x-template" id="log-entry">
+      <li v-if="show" class="log-entry">
+        {{ entry.timestamp }}
+        <span class="log-entry-hostname" v-on:click="filterByHostname">{{ entry.hostname }}</span>
+        <span class="log-entry-tag" v-on:click="filterByTag">{{ entry.tag }}</span>
+        {{ entry.content }}
+      </li>
+    </script>
+    <script src="/assets/app.js"></script>
+  </body>
+</html>
