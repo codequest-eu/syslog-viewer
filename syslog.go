@@ -100,9 +100,9 @@ func main() {
 	server := syslog.NewServer()
 	server.SetFormat(syslog.RFC3164)
 	server.SetHandler(handler)
-	server.ListenUDP("0.0.0.0:4321")
+	server.ListenUDP("0.0.0.0:514")
 	server.Boot()
 	go handler.keepProcessing()
-	log.Print("Server accepting UDP on port 4321 and HTTP on port 12345")
-	log.Fatal(http.ListenAndServe(":12345", router))
+	log.Print("Server accepting UDP on port 514 and HTTP on port 10514")
+	log.Fatal(http.ListenAndServe(":10514", router))
 }

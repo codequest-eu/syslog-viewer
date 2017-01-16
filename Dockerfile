@@ -7,5 +7,5 @@ WORKDIR $APP_HOME
 ADD syslog.go $APP_HOME/
 RUN go build
 ADD frontend $APP_HOME/frontend
-EXPOSE 4321/udp
+EXPOSE 514/udp 10514/tcp
 CMD '/syslog/syslog'
