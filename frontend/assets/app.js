@@ -38,7 +38,7 @@
       }
     },
     mounted: function() {
-      var websocket = new WebSocket('ws://localhost:12345/ws');
+      var websocket = new WebSocket('ws://localhost:10514/ws');
       websocket.onmessage = function(event) {
         this.entries.push(JSON.parse(event.data));
       }.bind(this);
